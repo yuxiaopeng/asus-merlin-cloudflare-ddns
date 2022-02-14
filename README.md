@@ -1,4 +1,4 @@
-# Cloudflare Dynamic DNS Update Script for Asuswrt-Merlin (on supportd ASUS routers)
+# Cloudflare Dynamic DNS Update Script for Asuswrt-Merlin (on supported ASUS routers)
 
 The Asuswrt-Merlin custom firmware adds support for custom dynamic DNS providers to various ASUS routers. This is great for Cloudflare users because, although Cloudflare is not one of the built-in providers, we can add support for it. This guide and accompanying script do exactly that. Confirmed works on the following model routers:
   - GT-AX11000,
@@ -52,7 +52,7 @@ Save the configuration. Ensure you are able to SSH into your router using your r
 1. Log into your router via SSH, and navigate to `/jffs/scripts`.
 2. Copy the `cloudflare_ddns` and `.cloudflare.example` files to that directory.
 3. Rename `.cloudflare.example` to `.cloudflare`.
-4. Edit `.cloudflare` with your [Cloudflare API token](https://blog.cloudflare.com/api-tokens-general-availability/) and zone ID from your Cloudflare portal. The script also supports the legacy "API Key plus account e-mail" method of authentication, but this method appears likely to be eliminated in future.
+4. Edit `.cloudflare` with your [Cloudflare API token](https://blog.cloudflare.com/api-tokens-general-availability/) and zone ID from your Cloudflare portal. The script also supports the legacy "API Key plus account e-mail" method of authentication, but this method is less secure and appears likely to be eliminated in future.
 5. Run `chmod 700 cloudflare_ddns`.
 6. Run `chmod 600 .cloudflare`.
 7. Run `./cloudflare_ddns list`.
