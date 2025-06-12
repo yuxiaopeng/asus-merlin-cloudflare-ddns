@@ -12,14 +12,14 @@ debug()
 
 debug "Executed as: $0 $@"
 
-CONFIG=$(dirname $0)/.cloudflare
+# CONFIG=$(dirname $0)/.cloudflare
 
-if [ -r $CONFIG ]; then
-	. $CONFIG
-else
-	( >&2 echo "Missing or unreadable $CONFIG" )
-	debug "Missing or unreadable $CONFIG"
-fi
+# if [ -r $CONFIG ]; then
+# 	. $CONFIG
+# else
+# 	( >&2 echo "Missing or unreadable $CONFIG" )
+# 	debug "Missing or unreadable $CONFIG"
+# fi
 
 # *** USER SETTINGS ***
 THROTTLE_SECONDS=5  # Limits calls to Cloudflare to minimize abuse
@@ -32,12 +32,12 @@ LOGFILE_TEMPFILE=$(dirname $0)/.$(basename $0).tmp
 FIRMWARE_NOTIFY_CMD=/sbin/ddns_custom_updated
 FIRMWARE_UPDATE_SUCCESS=1
 FIRMWARE_UPDATE_FAILURE=0
-CLOUDFLARE_AUTH_HEADERS="X-Auth-Email: $CLOUDFLARE_EMAIL
-X-Auth-Key: $CLOUDFLARE_API_KEY"
-# cloudflare prefers token-based auth, so use that if available
-if [ -n $CLOUDFLARE_API_TOKEN ]; then
+# CLOUDFLARE_AUTH_HEADERS="X-Auth-Email: $CLOUDFLARE_EMAIL
+# X-Auth-Key: $CLOUDFLARE_API_KEY"
+# # cloudflare prefers token-based auth, so use that if available
+# if [ -n $CLOUDFLARE_API_TOKEN ]; then
 	CLOUDFLARE_AUTH_HEADERS="Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-fi
+# fi
 
 # ensure temp files are deleted even if unexpected exit
 trap "rm -f $LOGFILE_TEMPFILE $CMD_ERROR_TEMPFILE" EXIT
